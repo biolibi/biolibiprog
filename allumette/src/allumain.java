@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class allumain { public static void main(java.lang.String a[]){
 
-    objectjoueur Personne [] =new objectjoueur[2];
+
     int nBallumette = 0;
     int choix = 0;
     String nompersonne[] = new String[3];
@@ -15,6 +15,8 @@ public class allumain { public static void main(java.lang.String a[]){
     int information1[]= new int[100];
     int information2[]= new int[100];
     int information3[]= new int[100];
+    int tot1 = 0;
+    int tot2 = 0;
 
     int décision [] =new int[2];
 
@@ -38,7 +40,7 @@ public class allumain { public static void main(java.lang.String a[]){
             System.out.println("La personne qui commence est : " + cellequicommence );
             for (int i = 0 ; i <= 100 ;){
                 if (cellequicommence == nompersonne[0]){
-                while (montantallumette != 1 || montantallumette !=2 || montantallumette != 3){
+                while (montantallumette != 1 && montantallumette !=2 && montantallumette != 3){
                     System.out.println("Le joueur : " + cellequicommence);
                     System.out.println("Entrez le nombre d'allumette (entre 1-3)");
                     montantallumette = sc.nextInt();
@@ -52,23 +54,32 @@ public class allumain { public static void main(java.lang.String a[]){
                         cellequicommence = nompersonne[2];
                     }
                 }
+               }
+                else if (cellequicommence == nompersonne[2]){
+                    System.out.println("Le joueur : " + cellequicommence);
+                    System.out.println("Entrez le nombre d'allumette (entre 1-3)");
+                    if (1 <= nBallumette ){
+                        nBallumette = nBallumette-3;
+                    }
+                    else if (nBallumette == 1){
+                        System.out.println("Il y a eu une erreur avec le packet d'allumette il y en reste encore 2");
+                        nBallumette = nBallumette+1;
+                        System.out.println("L'ordinateur à enlevé 1 allumette");
+                        nBallumette = nBallumette-1;
+                        System.out.println("Il reste : " + nBallumette + " allumettes");
+                        i++;
+                        if (cellequicommence == nompersonne[0]){
+                            cellequicommence = nompersonne[2];
+                        }
+                    }
+                }
                 else if (nBallumette <= montantallumette){
                     System.out.println("Le perdant est: " + cellequicommence);
                     //System.exit(0);
                     i = 101;
                     perdant = false;
-                }}
-                else if (cellequicommence == nompersonne[2]){
-                    System.out.println("Le joueur : " + cellequicommence);
-                    System.out.println("Entrez le nombre d'allumette (entre 1-3)");
-                    if (12 <= nBallumette ){
-                        nBallumette = nBallumette-3;
-                    }
-
-
                 }
-
-        }
+        }}
         if (choix == 2){
             while (perdant != false && 1 <= nBallumette){
                 System.out.println("Quel est le premier nom?");
@@ -81,28 +92,20 @@ public class allumain { public static void main(java.lang.String a[]){
                 System.out.println("La personne qui commence est : " + cellequicommence);
 
                 for (int i = 0 ; i <= 100 ;){
-                    while (montantallumette != 1 || montantallumette !=2 || montantallumette != 3){
-                    System.out.println("Le joueur : " + cellequicommence);
-                    System.out.println("Entrez le nombre d'allumette (entre 1-3)");
+                    while (montantallumette != 1 && montantallumette !=2 && montantallumette != 3){
+                        System.out.println("Le joueur : " + cellequicommence);
+                        System.out.println("Entrez le nombre d'allumette (entre 1-3)");
                         montantallumette = sc.nextInt();
-
                     }
-                        if (montantallumette < nBallumette){
+                    if (montantallumette < nBallumette){
                             if (nompersonne[0] == cellequicommence){
-                                for (int tot = 0; tot <= 100;){
-                                     information1[tot] = montantallumette;
-
-                                }
+                                information1[tot1] = montantallumette;
+                                tot1 = tot1+1;
                             }
-
-
                             else if (nompersonne[1] == cellequicommence){
-                                for (int tot = 0; tot <= 100;){
-                                    information2[tot] = montantallumette;
-
-                                }
+                                    information2[tot2] = montantallumette;
+                                    tot2 = tot2+1;
                             }
-
                             nBallumette = nBallumette-montantallumette;
                             montantallumette = 0;
                             System.out.println("Il reste : " + nBallumette + " allumettes");
@@ -115,13 +118,19 @@ public class allumain { public static void main(java.lang.String a[]){
                             }
                         }
 
-                        else if (nBallumette <= montantallumette){
+                    else if (nBallumette <= montantallumette){
                             System.out.println("Le perdant est: " + cellequicommence);
-                           for (int u = 0; u <= 100;u++){
-                               System.out.println("décision prise: " + information1[u]);
-                               System.out.println("décision prise: " + information2[u]);
+                        System.out.println("décision prise par " + nompersonne[0]);
+                        for (int u = 0; u <= 80;u++){
+                            System.out.print(information1[u] + " ");
+                        }
+                        System.out.println();
+                        System.out.println("décision prise par " + nompersonne[1]);
+                        for (int z = 0; z <= 80;z++){
+                            System.out.print(information2[z] + " ");
+                        }
+                        System.out.println();
 
-                           }
                             //System.exit(0);
                             i = 101;
                             perdant = false;
@@ -147,4 +156,4 @@ public class allumain { public static void main(java.lang.String a[]){
 
 
 }
-}
+

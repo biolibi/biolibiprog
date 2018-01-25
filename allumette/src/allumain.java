@@ -25,6 +25,7 @@ public class allumain { public static void main(java.lang.String a[]){
             information2[k]=  " ";
             information3[k]= " ";
         }
+        tot1 = 0; tot2 = 0; tot3 = 0;
         montantallumette = 0;
         nBallumette = 0;
         choix = 0; perdant = true;
@@ -35,7 +36,7 @@ public class allumain { public static void main(java.lang.String a[]){
     System.out.println("3) quitter");
     choix = sc.nextInt();
         if (choix == 1){
-            nBallumette = 12;
+
             System.out.println("Quel est ton nom?");
             nompersonne[0] = sc.next();
             nompersonne[2] = "ordinateur";
@@ -116,6 +117,8 @@ public class allumain { public static void main(java.lang.String a[]){
                         System.out.print(information3[z] + " ");
                     }
                     System.out.println();
+                    System.out.println("La dernière décision prise par : " + cellequicommence + " a été : " + montantallumette);
+                    System.out.println();
         i = 110;}}}
         if (choix == 2){
             while (perdant != false && 1 <= nBallumette){
@@ -166,6 +169,8 @@ public class allumain { public static void main(java.lang.String a[]){
                         for (int z = 0; z <= 80;z++){
                             System.out.print(information2[z] + " ");
                         }
+                        System.out.println();
+                        System.out.println("La dernière décision prise par : " + cellequicommence + " a été : " + montantallumette);
                         System.out.println();
 
                             //System.exit(0);

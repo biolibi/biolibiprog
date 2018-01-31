@@ -4,6 +4,40 @@ public class occupation {
     String entreprise = "";
     String lnameentreprise = "";
     String ladresseentreprise = "";
+    String villeentreprise = "";
+    String provinceentreprise = "";
+    String paysentreprise = "" ;
+
+    public String getVilleentreprise() {
+        return villeentreprise;
+    }
+
+    public void setVilleentreprise(String villeentreprise) {
+        this.villeentreprise = villeentreprise;
+    }
+
+    public String getProvinceentreprise() {
+        return provinceentreprise;
+    }
+
+    public void setProvinceentreprise(String provinceentreprise) {
+        this.provinceentreprise = provinceentreprise;
+    }
+
+    public String getPaysentreprise() {
+        return paysentreprise;
+    }
+
+    public void setPaysentreprise(String paysentreprise) {
+        this.paysentreprise = paysentreprise;
+    }
+
+    public occupation(String villeentreprise, String provinceentreprise, String paysentreprise) {
+
+        this.villeentreprise = villeentreprise;
+        this.provinceentreprise = provinceentreprise;
+        this.paysentreprise = paysentreprise;
+    }
 
     public occupation(String poste, String entreprise, String lnameentreprise, String ladresseentreprise) {
         this.poste = poste;

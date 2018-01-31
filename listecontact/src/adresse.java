@@ -12,7 +12,7 @@ public class adresse {
             this.rue = rue;
             this.appartement = appartement;
             this.ville = ville;
-            Province = province;
+            this.Province = Province;
             this.pays = pays;
         }
 

@@ -176,8 +176,6 @@ public class allumain { public static void main(java.lang.String a[]){
                             //System.exit(0);
                             i = 101;
                             perdant = false;
-
-
                         }}
                 }
             }

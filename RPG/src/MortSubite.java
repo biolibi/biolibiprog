@@ -1,3 +1,3 @@
-public abstract class MortSubite extends sort {
+public abstract class MortSubite extends Sort {
 
 }

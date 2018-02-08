@@ -1,9 +1,9 @@
-public class paladin extends guerrier {
+public class Paladin extends Guerrier {
 
 
 
 
-    public paladin (){
+    public Paladin(){
         this.force = 5;
         this.defense = 5;
         this.pointdevie = 80;

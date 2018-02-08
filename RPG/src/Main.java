@@ -1,5 +1,3 @@
-import jdk.nashorn.internal.scripts.JO;
-
 import java.util.Scanner;
 
 public class Main {
@@ -17,22 +15,22 @@ public class Main {
         for (int i = 0; i <= 1;i++){
 
             System.out.println("Joueur " + i +" , quel personnage voulez-vous avoir?");
-            System.out.println("1) magicien noir");
-            System.out.println("2) magicien rouge");
-            System.out.println("3) paladin");
-            System.out.println("4) barbare");
+            System.out.println("1) Magicien noir");
+            System.out.println("2) Magicien rouge");
+            System.out.println("3) Paladin");
+            System.out.println("4) Barbare");
             choix = sc.nextInt();
             if (choix == 1){
-                Joueur[i] = new magicienNoir();
+                Joueur[i] = new MagicienNoir();
             }
             if (choix == 2){
-                Joueur[i] = new magicienRouge();
+                Joueur[i] = new MagicienRouge();
             }
             if (choix == 3){
-                Joueur[i] = new paladin();
+                Joueur[i] = new Paladin();
             }
             if (choix == 4){
-                Joueur[i] = new barbare();
+                Joueur[i] = new Barbare();
             }
         }
 
@@ -41,6 +39,12 @@ public class Main {
         if (Joueur[joueurattaquer].getPointdevie() < 1){
             perdant = false;
             System.out.println(Joueur[joueurattaquer].getNom() + joueurattaquer  +  " a perdu");
+        }
+        if (Joueur[joueurattaquer] instanceof Magicien && Joueur[joueurquiattaque] instanceof Magicien){
+            if (Joueur[joueurattaquer].attaque == false && Joueur[joueurquiattaque].attaque == false){
+                System.out.println("Il y a égalité");
+                perdant = false;
+            }
         }
             entredeux = joueurattaquer ;
             joueurattaquer = joueurquiattaque;

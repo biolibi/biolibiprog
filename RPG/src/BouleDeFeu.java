@@ -1,4 +1,4 @@
-public abstract class bouledefeu extends sort {
+public abstract class BouleDeFeu extends Sort {
 
     public void bouledefeu (){
         coutPdemagie = 5;

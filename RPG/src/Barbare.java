@@ -1,7 +1,7 @@
-public class barbare extends guerrier {
+public class Barbare extends Guerrier {
 
 
-    public barbare (){
+    public Barbare(){
         this.force = 10;
         this.defense = 3;
         this.pointdevie = 100;

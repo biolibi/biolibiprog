@@ -1,4 +1,4 @@
-public  abstract class LancerSort extends sort{
+public  abstract class LancerSort extends Sort {
 
     public void LancerSort (Character LancerSort) {
 

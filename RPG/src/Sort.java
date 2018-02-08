@@ -1,4 +1,4 @@
-public abstract class sort {
+public abstract class Sort {
 
 
    int coutPdemagie;

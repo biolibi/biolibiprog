@@ -1,4 +1,4 @@
-public abstract class  guerrier extends Character {
+public abstract class Guerrier extends Character {
     int force;
 
     public void attaque (Character personnageAttaque) {

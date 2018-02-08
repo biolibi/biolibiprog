@@ -1,4 +1,4 @@
-public abstract class magicien extends Character {
+public abstract class Magicien extends Character {
     int pointdemagie;
 
 

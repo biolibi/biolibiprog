@@ -4,9 +4,7 @@ public class contactmain {
     public static void main(String[] args) {
 
         contactobject contact[] = new contactobject[20];
-
         int choix = 0;
-        String ajouter[] = new String[100];
         int g =0;
         int choix2 =0;
         int knumeroàajouter = 0;
@@ -14,7 +12,6 @@ public class contactmain {
         Scanner sc = new Scanner(System.in);
         int k = 0;
         int choix3 =0;
-        int choix4 =0;
 
         for (int i = 0; i <= 19;i++){
             contact[i] = new contactobject();

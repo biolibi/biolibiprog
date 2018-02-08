@@ -1,5 +1,16 @@
 public class paladin extends guerrier {
 
+
+
+
+    public paladin (){
+        this.force = 5;
+        this.defense = 5;
+        this.pointdevie = 80;
+        this.nom = "Paladin";
+        this.attaque = true;
+    }
+
     public int getDefense() {
         return defense;
     }
@@ -7,8 +18,6 @@ public class paladin extends guerrier {
     public void setDefense(int defense) {
         this.defense = defense;
     }
-
-
 
     public int getPointdevie() {
         return pointdevie;
@@ -32,6 +41,18 @@ public class paladin extends guerrier {
 
     public int getForce () {
         return force;
+    }
+
+    public  void setAttaque(boolean attaque){ this.attaque = attaque; }
+
+    public int getAttaque(){return  force; }
+
+    public  void attaque (Character personnageAttaque){
+        personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-((2*force)-personnageAttaque.getDefense()));
+        System.out.println("Il reste " + personnageAttaque.getPointdevie() + " point de vie"+ " à " + personnageAttaque.getNom());
+        if (personnageAttaque.getPointdevie() < 1){
+            personnageAttaque.attaque = true;
+        }
     }
 
 

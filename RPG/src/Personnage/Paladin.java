@@ -1,3 +1,5 @@
+package Personnage;
+
 public class Paladin extends Guerrier {
 
 
@@ -15,10 +17,6 @@ public class Paladin extends Guerrier {
         return defense;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
     public int getPointdevie() {
         return pointdevie;
     }
@@ -31,24 +29,11 @@ public class Paladin extends Guerrier {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
-    public void setForce (int force) {
-        this.force = force;
-    }
 
-    public int getForce () {
-        return force;
-    }
-
-    public  void setAttaque(boolean attaque){ this.attaque = attaque; }
-
-    public int getAttaque(){return  force; }
-
-    public  void attaque (Character personnageAttaque){
-        personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-((2*force)-personnageAttaque.getDefense()));
+    public  void attaque (character personnageAttaque){
+        personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-((2*(force+weapon))-personnageAttaque.getDefense()));
+        System.out.println("Le paladin attaque");
         System.out.println("Il reste " + personnageAttaque.getPointdevie() + " point de vie"+ " à " + personnageAttaque.getNom());
         if (personnageAttaque.getPointdevie() < 1){
             personnageAttaque.attaque = true;

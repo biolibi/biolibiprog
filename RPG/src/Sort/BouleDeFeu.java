@@ -1,3 +1,5 @@
+package Sort;
+
 public abstract class BouleDeFeu extends Sort {
 
     public void bouledefeu (){

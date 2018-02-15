@@ -1,3 +1,7 @@
+package Personnage;
+
+import Armes.Magique;
+
 import java.util.Random;
 
 public class MagicienNoir extends Magicien {
@@ -11,23 +15,16 @@ public class MagicienNoir extends Magicien {
         this.nom = "MagicienNoir";
         this.attaque = true;
         this.pointdemagie = 50;
+
     }
 
-    public int getPointdemagie() {
-        return pointdemagie;
-    }
 
-    public void setPointdemagie(int pointdemagie) {
-        this.pointdemagie = pointdemagie;
-    }
 
     public int getDefense() {
         return defense;
     }
 
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
+
 
     public int getPointdevie() {
         return pointdevie;
@@ -41,18 +38,14 @@ public class MagicienNoir extends Magicien {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public  void attaque (Character personnageAttaque){
+    public  void attaque (character personnageAttaque){
         int sortrandom = 0;
         sortrandom = sort.nextInt(2);
 
         if (sortrandom == 0 && 2 <= pointdemagie ){
             empoisonnement = empoisonnement+2;
             pointdemagie = pointdemagie-2;
-            personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-(empoisonnement));
+            personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-(empoisonnement+weapon));
             System.out.println("Le Magicien noir a utilisé empoissonnement. Il lui reste " + pointdemagie + " Point de magie");
             System.out.println("Il reste " + personnageAttaque.getPointdevie() + " point de vie"+ " à " + personnageAttaque.getNom());
             if (personnageAttaque.getPointdevie() <= 0){
@@ -71,12 +64,13 @@ public class MagicienNoir extends Magicien {
             }
             if (mortOuNon != 0){
                 System.out.println("Le Magicien noir a utilisé mort subite. Il lui reste " + pointdemagie + " Point de magie");
+                personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-(weapon));
                 System.out.println("Il reste " + personnageAttaque.getPointdevie() + " point de vie"+ " à " + personnageAttaque.getNom());
 
             }
         }
         else if (pointdemagie < 2){
-            System.out.println("Le Magicien noir n'a pas pu lancer de Sort");
+            System.out.println("Le Magicien noir n'a pas pu lancer de Sort.Sort");
             personnageAttaque.attaque = false;
         }
 

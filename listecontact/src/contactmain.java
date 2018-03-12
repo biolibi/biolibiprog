@@ -176,9 +176,14 @@ public class contactmain {
                         contacts.li1.add( new telephone(typeDeNumero,numero));
                         choix2 =0;
                     }
-                    if (choix2 == 2){
+                    if (choix2 == 2 && 0 < contacts.li1.size()){
                         System.out.println(contacts.li1);
+                        choix = 0;
+                        System.out.println("Quel numéro voulez-vous supprimé?");
+                        choix = sc.nextInt();
+                        contacts.li1.remove(choix);
                     }
+
                 }
             choix2 = 0;}
             if (choix == 3){
@@ -234,10 +239,11 @@ public class contactmain {
                 System.out.println("Contact supprimé");
             }
             if (choix == 5){
-                while (choix != 3){
+                while (choix != 4){
                 System.out.println("1) Quel contact voulez-vous ajouter?");
                 System.out.println("2) afficher les contacts");
-                System.out.println("3) Quitter");
+                System.out.println("3) supprimer un contact");
+                System.out.println("4) Quitter");
                 choix = 0;
                 choix = sc.nextInt();
 
@@ -252,6 +258,13 @@ public class contactmain {
 
                     System.out.println(ListeDeRappel.toString());
 
+                }
+                if (choix == 3){
+                    System.out.println("Quel contact voulez-vous supprimer?");
+                    int choix3 = 0;
+                    choix3 = sc.nextInt();
+                    contactobject  contacts = MapDeContact.get(choix3);
+                    ListeDeRappel.remove(contacts);
                 }
 
                 }

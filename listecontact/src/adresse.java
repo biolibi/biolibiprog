@@ -1,3 +1,5 @@
+
+
 public class adresse {
 
         int portenumero = 0  ;
@@ -21,7 +23,12 @@ public class adresse {
         }
 
         public void setPortenumero(int portenumero) {
-            this.portenumero = portenumero;
+            if (portenumero != ' '){
+                this.portenumero = portenumero;
+            }
+            else if (portenumero == ' '){
+                return;
+            }
         }
 
         public String getRue() {

@@ -1,7 +1,6 @@
-import java.util.List;
 
 public class LinkedList<T> {
-    int  taille = 0;
+    protected int  taille = 0;
     Node<T> head = null;
 
 
@@ -19,50 +18,60 @@ public class LinkedList<T> {
         taille++;
     }
 
+
     public T get(int index) {
 
         if (index < 0){
             return null;
         }
-        Node Perm = null;
+        Node perm = null;
         if (head != null) {
-           Perm = head.getNext();
+            perm = head.getNext();
             for (int i = 0; i < index; i++) {
-                if (Perm.getNext() == null)
-                    return null;
+                if (perm.getNext() == null)
+                        return null;
 
-                Perm = Perm.getNext();
+                perm = perm.getNext();
             }
-            return (T)Perm.getContenue();
+            return (T)perm.getContenue();
         }
-        return (T)Perm;
+        return (T)perm;
+
+
     }
 
     public boolean remove(int index) {
 
-        if (index < 1 || index > taille){
+
+        if (index < 0 || index > getTaille()){
             return false;
         }
-        Node Perm = head;
+
+        Node perm = head;
         if (head != null) {
             for (int i = 0; i < index; i++) {
-                if (Perm.getNext() == null){
+                if (perm.getNext() == null) {
                     return false;
                 }
-                Perm = Perm.getNext();
+                perm = perm.getNext();
             }
-            Perm.setNext(Perm.getNext().getNext());
+            perm.setNext(perm.getNext().getNext());
+
             taille--;
             return true;
+
         }
         return false;
     }
 
-    public void clear(){
+    public int clear(){
         taille = 0;
+        return taille;
     }
+
     public int getTaille(){
-        return (taille);
+        int asd = taille;
+        return (asd);
     }
 
     public void set(int index, T contenue){

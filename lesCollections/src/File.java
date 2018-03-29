@@ -5,7 +5,7 @@ public class File<T> {
         file.add(contenue);
     }
 
-    public T remove (T contenue){
+    public T remove (){
         T tempo = (T) file.get(file.getTaille());
         file.remove(0);
         return tempo;
@@ -15,8 +15,8 @@ public class File<T> {
         return (T)file.get(0);
     }
 
-    public void clear(){
-        file.taille = 0;
+    public int clear(){
+        return file.clear();
     }
 
     public int taille (){

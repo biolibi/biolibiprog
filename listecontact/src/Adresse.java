@@ -1,6 +1,6 @@
+import java.io.Serializable;
 
-
-public class adresse {
+public class Adresse implements Serializable {
 
         int portenumero = 0  ;
         String rue = "";
@@ -9,7 +9,7 @@ public class adresse {
         String Province = "";
         String pays = "";
 
-        public adresse(int portenumero, String rue, String appartement, String ville, String province, String pays) {
+        public Adresse(int portenumero, String rue, String appartement, String ville, String province, String pays) {
             this.portenumero = portenumero;
             this.rue = rue;
             this.appartement = appartement;

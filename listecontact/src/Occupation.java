@@ -1,4 +1,6 @@
-public class occupation {
+import java.io.Serializable;
+
+public class Occupation implements Serializable {
 
     String poste = "";
     String entreprise = "";
@@ -32,14 +34,14 @@ public class occupation {
         this.paysentreprise = paysentreprise;
     }
 
-    public occupation(String villeentreprise, String provinceentreprise, String paysentreprise) {
+    public Occupation(String villeentreprise, String provinceentreprise, String paysentreprise) {
 
         this.villeentreprise = villeentreprise;
         this.provinceentreprise = provinceentreprise;
         this.paysentreprise = paysentreprise;
     }
 
-    public occupation(String poste, String entreprise, String lnameentreprise, String ladresseentreprise) {
+    public Occupation(String poste, String entreprise, String lnameentreprise, String ladresseentreprise) {
         this.poste = poste;
         this.entreprise = entreprise;
         this.lnameentreprise = lnameentreprise;

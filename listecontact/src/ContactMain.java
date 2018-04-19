@@ -25,14 +25,12 @@ public class ContactMain {
         String numero;
         Map<Integer, ContactObject> MapDeContact = new HashMap<>();
         LinkedList ListeDeRappel = new LinkedList<ContactObject>();
-        int intConfirmation;
-
-
 
         System.out.println("Voulez-vous charger une liste existante?");
         System.out.println("1) Oui ");
         System.out.println("  (toutes les autres entrés seront considérés comme NON)");
         choix3 = unNombre(sc);
+        //LOADING SAVE
         if (choix3 == 1) {
             try{
                 ObjectInput entré = new ObjectInputStream(
@@ -106,10 +104,11 @@ public class ContactMain {
                 contacts.oc1.setEntreprise(characterSpéciaux(sc.next()));
                 System.out.println("Ville : ");
                 contacts.oc1.setVilleentreprise(characterSpéciaux(sc.next()));
-                System.out.println("Province : ");
-                contacts.oc1.setProvinceentreprise(characterSpéciaux(sc.next()));
                 System.out.println("Pays : ");
                 contacts.oc1.setPaysentreprise(unPays(sc.next()));
+                System.out.println("Province : ");
+                contacts.oc1.setProvinceentreprise(characterSpéciaux(sc.next()));
+
                 choix2 = 0;
 
                 while ( choix2 !=2 ){
@@ -125,7 +124,8 @@ public class ContactMain {
 
 
                         System.out.println("indiquer le numéro");
-                        numero = characterSpéciaux(sc.next());
+                        System.out.println("exemple: 418-530-8282");
+                        numero = numeroCodeRégional(sc.next());
 
                         contacts.li1.add( new Telephone(typeDeNumero,numero));
                         choix2 =0;
@@ -207,8 +207,9 @@ public class ContactMain {
                         System.out.println("indiquer le type de numéro");
                         typeDeNumero = characterSpéciaux(sc.next());
 
-                        System.out.println("indiquer le numéro (code régional + 7 chiffres");
-                        numero = characterSpéciaux(sc.next());
+                        System.out.println("indiquer le numéro ");
+                        System.out.println("exemple: 418-530-8282");
+                        numero = numeroCodeRégional(sc.next());
 
                         contacts.li1.add( new Telephone(typeDeNumero,numero));
                         choix2 =0;
@@ -233,7 +234,6 @@ public class ContactMain {
                 if (MapDeContact.size() == 0)
                     System.out.println("Il y a aucun contact");
 
-                 choix3 = 0;
                 choix3 = unNombre(sc);
                 if (choix3+1 <= MapDeContact.size()){
                     ContactObject contacts = MapDeContact.get(choix3);
@@ -292,7 +292,6 @@ public class ContactMain {
                 choix = unNombre(sc);
 
                 if (choix == 1){
-                     choix3 = 0;
                     System.out.println("entrer la position du contact");
                     choix3 = unNombre(sc);
                     ContactObject contacts = MapDeContact.get(choix3);
@@ -305,7 +304,7 @@ public class ContactMain {
                 }
                 if (choix == 3){
                     System.out.println("Quel contact voulez-vous supprimer?");
-                     choix3 = 0;
+
                     choix3 = unNombre(sc);
                     ContactObject contacts = MapDeContact.get(choix3);
                     ListeDeRappel.remove(contacts);
@@ -313,6 +312,7 @@ public class ContactMain {
 
                 }
             }
+            //sauvegarde
         if (choix == 6){
 
             System.out.println("Voulez-vous sauvegarder?");
@@ -395,12 +395,17 @@ public class ContactMain {
     public static String numeroCodeRégional (String entré){
         Scanner sc = new Scanner(System.in);
         String str = entré;
-        str = str.replaceAll("\\d+" , "");
-        if (str.length() != 7){
+        str = str.replaceAll("[^\\d-]" , "");
+        if (str.length() != 12){
             System.out.println("numéro de téléphone non valide");
             return numeroCodeRégional(sc.next());
         }
-        return str;
+
+        if (str.charAt(3) == '-' && str.charAt(7) == '-' && str.length() == 12){
+            System.out.println("Le numero a été ajouté");
+            return str;
+        }
+       return numeroCodeRégional(sc.next());
     }
 }
 

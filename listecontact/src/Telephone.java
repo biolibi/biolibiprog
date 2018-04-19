@@ -12,9 +12,9 @@ public class Telephone implements Serializable {
         this.typedenumero = typedenumero;
     }
 
-    int régional = numerotelephone.charAt(0)+numerotelephone.charAt(1)+numerotelephone.charAt(2);
+
 
     public String toString() {
-        return  rouge+"Type de numéro: " +noir+ typedenumero +bleu+ " Numéro: " +noir+ '('+régional+')' + "\n";
+        return  rouge+"Type de numéro: " +noir+ typedenumero +bleu+ " Numéro: " +noir+ numerotelephone + "\n";
     }
 }

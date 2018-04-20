@@ -84,10 +84,9 @@ public class ContactMain {
                 contacts.ad1.setVille(characterSpéciaux(sc.next()));
                 System.out.println("Pays : ");
                 contacts.ad1.setPays(unPays(sc.next()));
-                System.out.println("Province :");
-                if (contacts.ad1.getPays() == "Canada"){
-                    //METHODE PROVINCE QUÉBEC
-                    contacts.ad1.setProvince(sc.next());
+                System.out.println("Province : (exemple: Quebec");
+                if (contacts.ad1.getPays().equals("Canada")){
+                    contacts.ad1.setProvince(province(characterSpéciaux(sc.next())));
                 }
                 else if (contacts.ad1.getPays() != "Canada"){
                     contacts.ad1.setProvince(sc.next());
@@ -106,11 +105,12 @@ public class ContactMain {
                 contacts.oc1.setVilleentreprise(characterSpéciaux(sc.next()));
                 System.out.println("Pays : ");
                 contacts.oc1.setPaysentreprise(unPays(sc.next()));
-                System.out.println("Province : ");
-                contacts.oc1.setProvinceentreprise(characterSpéciaux(sc.next()));
-
+                System.out.println("Province : (exemple: Quebec");
+                if (contacts.ad1.getPays() == "Canada")
+                contacts.oc1.setProvinceentreprise(province(sc.next()));
+                else if (contacts.ad1.getPays() != "Canada")
+                    contacts.oc1.setProvinceentreprise(characterSpéciaux(sc.next()));
                 choix2 = 0;
-
                 while ( choix2 !=2 ){
 
                     System.out.println("Voulez vous entrer un numero de téléphone?");
@@ -168,7 +168,7 @@ public class ContactMain {
                 System.out.println("Pays : ");
                 System.out.println(contacts.ad1.getPays());
                 contacts.ad1.setPays(unPays(sc.next()));
-                System.out.println("Province :");
+                System.out.println("Province : (exemple: Quebec)");
                 System.out.println(contacts.ad1.getProvince());
                 contacts.ad1.setProvince(characterSpéciaux(sc.next()));
                 System.out.println("Occupation : ");
@@ -191,7 +191,7 @@ public class ContactMain {
                 System.out.println("Pays : ");
                 System.out.println(contacts.oc1.getPaysentreprise());
                 contacts.oc1.setPaysentreprise(unPays(sc.next()));
-                System.out.println("Province : ");
+                System.out.println("Province : (exemple: Quebec");
                 System.out.println(contacts.oc1.getProvinceentreprise());
                 contacts.oc1.setProvinceentreprise(characterSpéciaux(sc.next()));
                 contacts.oc1.setPaysentreprise(characterSpéciaux(sc.next()));
@@ -406,6 +406,19 @@ public class ContactMain {
             return str;
         }
        return numeroCodeRégional(sc.next());
+
+    }
+    public static String province (String entré){
+        Scanner sc = new Scanner(System.in);
+        String[] province = {"Quebec","Ontario","Colombie-Britannique","Alberta","Nouvelle-Écosse","Saskatchewan","Manitoba","Nouveau-Brunswick","Terre-Neuve-et-Labrador","Ile-du-Prince-Édouard"};
+
+        for (int i = 0; i<10;i++  ){
+            if (entré.equals(province[i])){
+                return province[i];
+            }
+        }
+        System.out.println("Province non valide");
+        return province(sc.next());
     }
 }
 

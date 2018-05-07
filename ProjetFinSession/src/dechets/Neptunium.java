@@ -4,8 +4,13 @@ package dechets;
     public class Neptunium extends Matiere{
         public Neptunium() {
             this.nom = "Neptunium";
-            this.masseVolumique = 237.00;
-            this.pourcentage = 45;
+            this.masseVolumique = 244;
+            this.pourcentage = 47;
+        }
+        int masseVolumique = 244;
+
+        public int getMasseVolumique() {
+            return masseVolumique;
         }
     }
 

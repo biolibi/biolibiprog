@@ -1,4 +1,8 @@
 package Centre;
+import Vaisseau.Vaisseau;
+import planetes.*;
+import java.util.LinkedList;
+import java.util.Random;
 
 public class CentreDeTri {
     private final int quantitéMaxGado = 1000;
@@ -12,6 +16,24 @@ public class CentreDeTri {
     private  int quantitéMinPluto = 0;
     private  int quantitéMinThul = 0;
     private  int quantitéMinTher = 0;
+    LinkedList<Vaisseau> fileDattente = new LinkedList<Vaisseau>();
+    protected Planete[] listeDesPlanètes = {new AlphaRomeo() , new BravoTerre(), new CharlieJupiter(), new DeltaNeptune() , new QuebecVenus()};
+    protected LinkedList<CentreDeTri> centreDeTris = new LinkedList<>();
+
+
+
+    public void filePourAttendre (Vaisseau vaisseau){
+        if (fileDattente.size() < 10){
+            fileDattente.add(vaisseau);
+        }
+        else if (fileDattente.size() == 10){
+            Random choix = new Random();
+            fileDattente.peek().remplir(fileDattente.get(0), listeDesPlanètes[choix.nextInt(5)]);
+            fileDattente.remove(0);
+            fileDattente.add(vaisseau);
+        }
+
+    }
 
 
 
@@ -55,9 +77,7 @@ public class CentreDeTri {
         this.quantitéMinTher = quantitéMinTher;
     }
 
-    public int getQuantitéMinGado() {
-        return quantitéMinGado;
-    }
+    public int getQuantitéMinGado() { return quantitéMinGado; }
 
     public int getQuantitéMinNeptu() {
         return quantitéMinNeptu;

@@ -1,5 +1,7 @@
 package Personnage;
 
+import Sort.BouleDeFeu;
+
 import java.util.Random;
 
 public class MagicienRouge extends Magicien {
@@ -45,6 +47,7 @@ public class MagicienRouge extends Magicien {
             }
         }
         if (sortrandom == 1 && 5 <= pointdemagie ){
+            pointdemagie = pointdemagie-5;
             personnageAttaque.setPointdevie(personnageAttaque.getPointdevie()-((7+weapon)-personnageAttaque.getDefense()));
             System.out.println("Le Magicien rouge a utilisé pic de glace. Il lui reste " + pointdemagie + " point de magie" );
             System.out.println("Il reste " + personnageAttaque.getPointdevie() + " point de vie"+ " à " + personnageAttaque.getNom());

@@ -31,23 +31,9 @@ public class objet implements Comparable<objet> {
         return année;
     }
 
-
-
-    public int getISBN() {
-        return ISBN;
-    }
-
-
     public String getTitre() {
         return titre;
     }
-
-
-
-    public String getSousTitre() {
-        return sousTitre;
-    }
-
 
     public String getAuteur() {
         return auteur;

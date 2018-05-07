@@ -85,8 +85,6 @@ public class algo {
 
     public static void compareto (){
         java.lang.String noir = (char)27 + "[30m";
-        java.lang.String rouge = (char)27 + "[31m";
-        java.lang.String bleu = (char)27 + "[34m";
         java.lang.String brillant = (char)27 + "[1m";
         objet[] asd = {new objet(1923 , 288321 , "La mort" , "Part 2" , "Olivier Girard" ,"Édition Jeunesse" ) ,
                 new objet(1913 , 291459 , "La vie" , "Part 3" , "Martin Petit" , "Édition de L'Homme") ,

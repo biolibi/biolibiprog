@@ -1,6 +1,4 @@
-package Vaisseau;
-
-import dechets.Matiere;
+package vaisseau;
 
 import java.util.ArrayList;
 
@@ -8,8 +6,8 @@ import java.util.ArrayList;
  * Created by BelSi1731422 on 2018-04-26.
  */
 public class Lourd extends Vaisseau {
-    public Lourd(ArrayList<Matiere> cargo , String nom , int maxCapacite) {
-        this.cargo = new ArrayList<Matiere>();
+    public Lourd() {
+        this.cargo = new ArrayList<>();
         this.nom = "Lourd";
         this.maxCapacite = 30;
     }

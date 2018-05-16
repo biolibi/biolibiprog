@@ -1,5 +1,8 @@
 package planetes;
 
+/**
+ * Created by BelSi1731422 on 2018-04-26.
+ */
 public class Planete{
     protected String nom;
     protected int nbPlutonium;

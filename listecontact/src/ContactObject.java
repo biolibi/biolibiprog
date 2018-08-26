@@ -22,6 +22,7 @@ public class ContactObject implements Serializable{
     }
 
     public void setNom(String nom) {
+
         if (nom != ""){
             this.nom = nom;
         }

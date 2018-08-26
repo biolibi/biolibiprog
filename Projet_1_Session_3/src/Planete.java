@@ -5,7 +5,6 @@ import java.util.Random;
 public class Planete {
 
     protected String nom;
-    List listeObjet = new ArrayList();
     Random random = new Random();
     int chance;
     int nB;
@@ -26,7 +25,7 @@ public class Planete {
             System.out.println("Vous avez perdu : " + chance + " vie");
             vaisseau.setPointDeVie((vaisseau.getPointDeVie()-chance));
         }
-        //Object
+        //Objet
         chance = random.nextInt(5);
         System.out.println("Lors de l'exploration vous avez trouvé : " + chance + " objets");
         for (int i = 0; i< chance ; i++){

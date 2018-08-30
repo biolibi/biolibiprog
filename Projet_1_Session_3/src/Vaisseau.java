@@ -10,7 +10,7 @@ public class Vaisseau {
     int PointDeVie = 100;
     String PlaneteActuel = "Terre";
     String RevenirEnArrière;
-    LinkedList<Vaisseau> retour = new LinkedList<>();
+    ArrayList<Vaisseau> retour = new ArrayList<>();
     public Vaisseau (){
        this.Carburant = getCarburant();
        this.PointDeVie = getPointDeVie();
@@ -21,10 +21,6 @@ public class Vaisseau {
 
     public ArrayList getInventaire() {
         return Inventaire;
-    }
-
-    public void setInventaire(ArrayList inventaire) {
-        Inventaire = inventaire;
     }
 
     public String getPlaneteActuel() {

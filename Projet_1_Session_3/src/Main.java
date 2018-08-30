@@ -37,7 +37,7 @@ public class Main {
                 if (nB == 3)
                     utiliser(vaisseau);
                 if (nB == 4){
-                    changerVaisseau(vaisseau);
+                    revenirArrière(vaisseau);
                 }
             }
         }
@@ -117,14 +117,21 @@ public class Main {
 
 
 
-        //Peu fonctionner si on arrive à passer l'information du vaisseau par référence et non par valeur
 
 
         public  static void revenirArrière (Vaisseau vaisseau){
 
-            if (0 <= vaisseau.retour.size() ){
+            if (0 < vaisseau.retour.size() ){
+                Vaisseau tempo;
+                ArrayList inventaire = new ArrayList();
+                tempo= vaisseau.retour.get(vaisseau.retour.size()-1);
+                vaisseau.retour.remove(vaisseau.retour.size()-1);
+                vaisseau.setPointDeVie(tempo.getPointDeVie());
+                vaisseau.setCarburant(tempo.getCarburant());
+                vaisseau.getInventaire().clear();
+                vaisseau.setPlaneteActuel(tempo.getRevenirEnArrière());
 
-                System.out.println("Vous êtes téléporter vers votre ancienne exploration");
+                System.out.println("Vous êtes téléporter vers votre ancienne exploration et laisser derrière vous tous vos objets");
                 vaisseau.setPlaneteActuel(vaisseau.getRevenirEnArrière());
                 System.out.println("Vous êtes désormais sur la planète: " + vaisseau.getPlaneteActuel());
 
@@ -137,18 +144,12 @@ public class Main {
             }
 
         }
-        public static void changerVaisseau(Vaisseau vaisseau){
 
-            Vaisseau tempo;
-            tempo= vaisseau.retour.pop();
-            revenirArrière(tempo);
-        }
+
 
         public static void planeteActuel (Vaisseau vaisseau){
         System.out.println("Planète actuel: " + vaisseau.PlaneteActuel);
         }
-
-
 
 
 }

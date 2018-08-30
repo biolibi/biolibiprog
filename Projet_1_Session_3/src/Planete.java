@@ -14,7 +14,7 @@ public class Planete implements Cloneable {
         return nom;
     }
 
-    private static Object cloneObject(Vaisseau vaisseau){
+    private static Object ClonerUnObjet(Vaisseau vaisseau){
         try{
             Object clone = vaisseau.getClass().newInstance();
             for (Field field : vaisseau.getClass().getDeclaredFields()) {
@@ -32,7 +32,7 @@ public class Planete implements Cloneable {
         java.lang.String bleu = (char)27 + "[34m";
         java.lang.String noir = (char)27 + "[30m";
         //Retour
-        cloneObject(vaisseau);
+        ClonerUnObjet(vaisseau);
 
 
         //Essence

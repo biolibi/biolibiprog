@@ -123,7 +123,6 @@ public class Main {
 
             if (0 < vaisseau.retour.size() ){
                 Vaisseau tempo;
-                ArrayList inventaire = new ArrayList();
                 tempo= vaisseau.retour.get(vaisseau.retour.size()-1);
                 vaisseau.retour.remove(vaisseau.retour.size()-1);
                 vaisseau.setPointDeVie(tempo.getPointDeVie());

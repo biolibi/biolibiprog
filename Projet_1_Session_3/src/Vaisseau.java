@@ -1,11 +1,31 @@
+import sun.awt.image.ImageWatched;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Vaisseau {
 
-    int Carburant = 500;
+    int  Carburant = 500;
     int PointDeVie = 100;
     String PlaneteActuel = "Terre";
     String RevenirEnArrière;
+    LinkedList<Vaisseau> retour = new LinkedList<>();
+    public Vaisseau (){
+       this.Carburant = getCarburant();
+       this.PointDeVie = getPointDeVie();
+       this.Inventaire = getInventaire();
+       this.PlaneteActuel = getPlaneteActuel();
+    }
+
+
+    public ArrayList getInventaire() {
+        return Inventaire;
+    }
+
+    public void setInventaire(ArrayList inventaire) {
+        Inventaire = inventaire;
+    }
 
     public String getPlaneteActuel() {
         return PlaneteActuel;

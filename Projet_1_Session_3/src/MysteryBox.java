@@ -38,9 +38,10 @@ public class MysteryBox extends Objet {
                 vaisseau.setPointDeVie(vaisseau.getPointDeVie()+10);
                 System.out.println("Vous avez désormais : " + vaisseau.getPointDeVie() + " points de vie");
             }
-            if (choix == 2)
+            if (choix == 2){
                 System.out.println("Vous êtes mort");
                 vaisseau.setPointDeVie(0);
+            }
         }
         if (nB == 2){
             System.out.println("Vous trouvez un vaisseau");
@@ -61,9 +62,9 @@ public class MysteryBox extends Objet {
             if (choix == 1){
                 System.out.println("Vous tentez d'améliorer votre vaisseau");
                 choix = random.nextInt(10);
-                if (choix == 0)
+                if (choix != 0)
                     System.out.println("Vous avez échoués");
-                if (choix != 0){
+                if (choix == 0){
                     System.out.println("Vous avez réussi");
                     System.out.println("Votre vaisseaux gagne +20 points de vie , +200 litres supplémentaire ainsi que votre réservoir est désormais remplis et votre vaisseau réparé");
                     vaisseau.setCarburant(700);

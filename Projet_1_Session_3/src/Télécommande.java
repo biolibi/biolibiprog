@@ -12,7 +12,7 @@ public class Télécommande extends Objet {
         System.out.println("Ils vous proposent deux solutions:");
         System.out.println("1)...");
         System.out.println("2)...");
-        nB = random.nextInt(1);
+        nB = random.nextInt(2);
         System.out.println("Vous ne comprenez pas les deux choix et choissisez l'un aléatoire");
         System.out.println("Vous avez choisis: " + (nB+1));
         if (nB == 0){

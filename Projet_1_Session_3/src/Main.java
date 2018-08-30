@@ -1,4 +1,4 @@
-import java.lang.management.PlatformLoggingMXBean;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -6,37 +6,48 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String a[]){
+    Vaisseau vaisseau = new Vaisseau();
+        simulation(vaisseau);
+    }
+
+    public static void simulation (Vaisseau vaisseau){
+        java.lang.String brillant = (char)27 + "[1m";
+        java.lang.String noir = (char)27 + "[30m";
         Scanner sc = new Scanner(System.in);
-        Vaisseau vaisseau = new Vaisseau();
         int nB;
         boolean Mort = false;
+
         while (Mort == false){
             if (vaisseau.getPointDeVie() <= 0)
                 Mort = true;
 
             if (vaisseau.getCarburant() <= 0)
                 Mort = true;
-        System.out.println("Que voulez-vous faire?");
-        System.out.println("1) Examiner le vaisseau");
-        System.out.println("2) Explorer une planète");
-        System.out.println("3) Utilisez un objet dans l'inventaire");
-        System.out.println("4) Revenir en arrière");
-        if (0 <vaisseau.getPointDeVie() && 0 < vaisseau.getCarburant()){
-         nB = unNombre(sc);
-        if (nB == 1)
-            examiner(vaisseau);
-        if (nB == 2)
-            explorationPlanete(vaisseau);
-        if (nB == 3)
-            utiliser(vaisseau);
-        if (nB == 4)
-            revenirArrière(vaisseau);
-        }
+            System.out.println(brillant+"Que voulez-vous faire?");
+            System.out.println("1) Examiner le vaisseau");
+            System.out.println("2) Explorer une planète");
+            System.out.println("3) Utilisez un objet dans l'inventaire");
+            System.out.println("4) Revenir en arrière"+noir);
+            if (0 <vaisseau.getPointDeVie() && 0 < vaisseau.getCarburant()){
+                nB = unNombre(sc);
+                if (nB == 1)
+                    examiner(vaisseau);
+                if (nB == 2)
+                    explorationPlanete(vaisseau);
+                if (nB == 3)
+                    utiliser(vaisseau);
+                if (nB == 4){
+                    changerVaisseau(vaisseau);
+                }
+            }
         }
     }
+
     public static void explorationPlanete (Vaisseau vaisseau){
+        java.lang.String rouge = (char)27 + "[31m";
+        java.lang.String noir = (char)27 + "[30m";
     Random random = new Random();
-    int chance = (random.nextInt(5));
+    int chance = (random.nextInt(6));
     List listeDePlanete = new ArrayList();
     listeDePlanete.add(new Venus(vaisseau));
     listeDePlanete.add(new Mars(vaisseau));
@@ -48,24 +59,30 @@ public class Main {
     Planete vaisseauExplorer = (Planete) listeDePlanete.get(chance);
     vaisseau.setRevenirEnArrière(vaisseau.getPlaneteActuel());
     vaisseau.setPlaneteActuel(vaisseauExplorer.getNom());
-    System.out.println("Vous explorer la planète: " + vaisseauExplorer.getNom());
+    System.out.println(rouge+"Vous explorer la planète: " + vaisseauExplorer.getNom()+noir);
     vaisseauExplorer.explorer(vaisseau);
 }
     public static void examiner (Vaisseau vaisseau){
-    System.out.println("Quantité d'essence : " + vaisseau.getCarburant());
-    System.out.println("Points de vie : " + vaisseau.getPointDeVie());
+        java.lang.String brillant = (char)27 + "[1m";
+        java.lang.String rouge = (char)27 + "[31m";
+        java.lang.String teal = (char)27 + "[35m";
+        java.lang.String vert = (char)27 + "[32m";
+        java.lang.String noir = (char)27 + "[30m";
+    System.out.println(vert+"Quantité d'essence : " + vaisseau.getCarburant());
+    System.out.println(teal+"Points de vie : " + vaisseau.getPointDeVie()+noir);
     planeteActuel(vaisseau);
-    System.out.println("Inventaire : ");
+    System.out.println(rouge+"Inventaire : ");
     if ( 1 <= vaisseau.Inventaire.size() ){
         for (int i =0; i < vaisseau.Inventaire.size();i++){
             Objet objet = (Objet)vaisseau.Inventaire.get(i);
-            System.out.println(objet.nom);
+            System.out.println(brillant+objet.nom+noir);
         }
     }
 }
     public static void utiliser(Vaisseau vaisseau){
         Scanner sc = new Scanner(System.in);
         int nB;
+        int choix;
         System.out.println("Inventaire : ");
         if ( 1 <= vaisseau.Inventaire.size() ){
             for (int i =0; i < vaisseau.Inventaire.size();i++){
@@ -75,35 +92,63 @@ public class Main {
         }
         System.out.println("Quel objet voulez-vous utlisez? (entrez le numéro)");
         nB = unNombre(sc);
+
         if (nB < vaisseau.Inventaire.size()){
             Objet objet = (Objet)vaisseau.Inventaire.get(nB);
             System.out.println("Vous allez utliser l'objet : " + objet.nom);
             System.out.println("1) Confirmer");
             System.out.println("2) Quitter");
-            nB = unNombre(sc);
-            if (nB == 1)
+            choix = unNombre(sc);
+            if (choix == 1){
                 objet.utiliser(vaisseau);
-        }
+                vaisseau.Inventaire.remove(nB);
+            }
 
-    }
-    public static void planeteActuel (Vaisseau vaisseau){
-        System.out.println("Planète actuel: " + vaisseau.PlaneteActuel);
-    }
-    public static void revenirArrière (Vaisseau vaisseau){
-        System.out.println("Vous êtes téléporter vers votre ancienne exploration");
-        vaisseau.setPlaneteActuel(vaisseau.getRevenirEnArrière());
-        System.out.println("Vous êtes désormais sur la planète: " + vaisseau.getPlaneteActuel());
-        if (vaisseau.getPlaneteActuel() == null){
-            System.out.println("Vous êtes perdu dans l'espace");
-            System.out.println("Fin de la partie");
-            vaisseau.setPointDeVie(0);
-        }
-    }
+        } }
 
-    public static int unNombre(Scanner sc){
+        public static int unNombre(Scanner sc){
         while (!sc.hasNextInt()){
             System.out.println(sc.next() + " n'est pas un nombre valide. Réessayer");
         }
         return sc.nextInt();
     }
+
+
+
+
+
+        //Peu fonctionner si on arrive à passer l'information du vaisseau par référence et non par valeur
+
+
+        public  static void revenirArrière (Vaisseau vaisseau){
+
+            if (0 <= vaisseau.retour.size() ){
+
+                System.out.println("Vous êtes téléporter vers votre ancienne exploration");
+                vaisseau.setPlaneteActuel(vaisseau.getRevenirEnArrière());
+                System.out.println("Vous êtes désormais sur la planète: " + vaisseau.getPlaneteActuel());
+
+            }
+
+            else  {
+                System.out.println("Vous êtes perdu dans l'espace");
+                System.out.println("Fin de la partie");
+                System.exit(0);
+            }
+
+        }
+        public static void changerVaisseau(Vaisseau vaisseau){
+
+            Vaisseau tempo;
+            tempo= vaisseau.retour.pop();
+            revenirArrière(tempo);
+        }
+
+        public static void planeteActuel (Vaisseau vaisseau){
+        System.out.println("Planète actuel: " + vaisseau.PlaneteActuel);
+        }
+
+
+
+
 }

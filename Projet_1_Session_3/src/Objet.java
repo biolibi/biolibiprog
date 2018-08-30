@@ -1,5 +1,5 @@
 public abstract class Objet {
-    String nom;
+    protected String nom;
     public void utiliser (Vaisseau vaisseau){
     }
 

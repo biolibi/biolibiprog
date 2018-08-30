@@ -41,6 +41,10 @@ public class Main {
                 }
             }
         }
+        System.out.println("Trajet: ");
+        for (int i = 0; i<vaisseau.trajet.size();i++){
+            System.out.print(vaisseau.trajet.get(i) + " ");
+        }
     }
 
     public static void explorationPlanete (Vaisseau vaisseau){
@@ -120,14 +124,19 @@ public class Main {
 
 
         public  static void revenirArrière (Vaisseau vaisseau){
-
+            //L'inventaire devrait être passer par reférence et non par valeur pour que sa fonctionne
             if (0 < vaisseau.retour.size() ){
                 Vaisseau tempo;
+                ArrayList<Objet> arrayTempo = new ArrayList<>();
                 tempo= vaisseau.retour.get(vaisseau.retour.size()-1);
+                for (int i =0; i < vaisseau.getInventaire().size();i++)
+                    arrayTempo.add((Objet) tempo.getInventaire().get(i));
                 vaisseau.retour.remove(vaisseau.retour.size()-1);
                 vaisseau.setPointDeVie(tempo.getPointDeVie());
                 vaisseau.setCarburant(tempo.getCarburant());
                 vaisseau.getInventaire().clear();
+                for (int i = 0; i < vaisseau.getInventaire().size();i++)
+                    vaisseau.getInventaire().add(arrayTempo.get(i));
                 vaisseau.setPlaneteActuel(tempo.getRevenirEnArrière());
 
                 System.out.println("Vous êtes téléporter vers votre ancienne exploration et laisser derrière vous tous vos objets");
@@ -139,6 +148,10 @@ public class Main {
             else  {
                 System.out.println("Vous êtes perdu dans l'espace");
                 System.out.println("Fin de la partie");
+                System.out.println("Trajet: ");
+                for (int i = 0; i<vaisseau.trajet.size();i++){
+                    System.out.print(vaisseau.trajet.get(i) + " ");
+                }
                 System.exit(0);
             }
 

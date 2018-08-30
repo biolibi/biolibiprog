@@ -36,6 +36,7 @@ public class Planete implements Cloneable {
 
 
         //Essence
+        vaisseau.trajet.add(this.nom);
         chance = random.nextInt(100);
         System.out.println("Vous avez dépensé " + chance + " bidon d'essence");
         vaisseau.setCarburant((vaisseau.getCarburant()-chance));

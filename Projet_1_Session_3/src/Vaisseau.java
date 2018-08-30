@@ -11,13 +11,22 @@ public class Vaisseau {
     String PlaneteActuel = "Terre";
     String RevenirEnArrière;
     ArrayList<Vaisseau> retour = new ArrayList<>();
+    ArrayList trajet = new ArrayList<>();
     public Vaisseau (){
        this.Carburant = getCarburant();
        this.PointDeVie = getPointDeVie();
        this.Inventaire = getInventaire();
        this.PlaneteActuel = getPlaneteActuel();
+       this.trajet = getTrajet();
     }
 
+    public ArrayList<Planete> getTrajet() {
+        return trajet;
+    }
+
+    public void setTrajet(ArrayList<Planete> trajet) {
+        this.trajet = trajet;
+    }
 
     public ArrayList getInventaire() {
         return Inventaire;

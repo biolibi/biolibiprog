@@ -4,15 +4,18 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import java.net.URL;
 import java.util.*;
 
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    public void start (Stage primaryStage) {
 
+    public void start (Stage primaryStage) {
         primaryStage.setTitle("ClickerHero");
         Label texte = new Label("Score: ");
         int nombreDeCookie = 1;
@@ -23,6 +26,8 @@ public class Main extends Application {
         creerBatiment(listDeBatiment);
         PrixEnsemble(prix);
 
+
+
         Label clique = new Label(Integer.toString(0));
         Button button = new Button("clicker");
         Button doubleClick = new Button("x2 click : " + prix.get(0));
@@ -31,9 +36,12 @@ public class Main extends Application {
         Button minerCookie = new Button("MinerUpgrade : " + prix.get(3));
         Button usineCookie = new Button("UsineUpgrade : "+ prix.get(4));
         Button reductionUpgrade = new Button("Reduction upgrade : " + prix.get(5));
+        ToggleButton musique =  new ToggleButton("Motivation : FREE");
 
         List<Integer> liste = new ArrayList<>();
 
+        musique.setTranslateX(610);
+        musique.setTranslateY(300);
         button.setTranslateX(640);
         button.setTranslateY(360);
         texte.setTranslateX(500);
@@ -47,7 +55,7 @@ public class Main extends Application {
         clique.setScaleY(2);
         texte.setScaleY(2);
 
-        Group root = new Group(texte,clique, button,doubleClick,reductionUpgrade,clickAuto,minerCookie,usineCookie,templeCookie);
+        Group root = new Group(texte,clique, button,doubleClick,reductionUpgrade,clickAuto,minerCookie,usineCookie,templeCookie,musique);
 
         root.setStyle("-fx-background-color: #F0591E;");
         primaryStage.setWidth(1280);
@@ -55,11 +63,13 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root));
 
+
         //TIMER
         timer(listDeBatiment,clique);
 
         //Clic de souris
         button.setOnAction((event)->{
+
             liste.add(Augmenter(nombreDeCookie,boost.get(0)));
             Integer tempo = liste.stream().reduce((c, d) ->(c+d)).get();
             Integer resultat = (Integer.parseInt(clique.getText())+tempo);
@@ -123,8 +133,22 @@ public class Main extends Application {
                 update(doubleClick,reductionUpgrade,clickAuto,minerCookie,usineCookie,templeCookie, prix , clique);
             }
         });
+        //musique
+        musique.setOnAction((event) -> {
+            musique();
+        });
+
+
         primaryStage.show();
     };
+    public void musique() {
+        final URL resource = getClass().getResource("musicDeBiscuit.mp3");
+        final javafx.scene.media.Media media = new javafx.scene.media.Media(resource.toString());
+        final MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
+
 
     public static Integer Augmenter(Integer nombre,Integer boost){
     nombre = nombre*boost;

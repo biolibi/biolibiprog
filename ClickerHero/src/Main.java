@@ -65,7 +65,7 @@ public class Main extends Application {
 
 
         //TIMER
-        timer(listDeBatiment,clique);
+        timer(listDeBatiment,clique,boost);
 
         //Clic de souris
         button.setOnAction((event)->{
@@ -158,15 +158,17 @@ public class Main extends Application {
         nombre = nombre-diminuer;
         return nombre;}
 
-    public void timer (List<Bâtiment> listDeBatiment , Label clique){
+    public void timer (List<Bâtiment> listDeBatiment , Label clique , List boost){
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 Platform.runLater(() -> {
+
                     int somme = 0;
                     for (int i =0; i<listDeBatiment.size();i++ )
                         somme = somme+(listDeBatiment.get(i).getNiveau()*2);
+
 
                      somme = somme+Integer.parseInt(clique.getText());
 

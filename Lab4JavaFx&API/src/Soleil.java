@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Soleil extends Group {
 
-
     public static Group groupe() {
         Group soleil = new Group(rayon());
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2),soleil);
@@ -18,7 +17,9 @@ public class Soleil extends Group {
         rotateTransition.setCycleCount(-1);
         rotateTransition.setAutoReverse(true);
         rotateTransition.play();
-        Group finale = new Group(soleil,soleil());
+        Circle soleil2 = new Circle(320,60,48);
+        soleil2.setFill(Color.LIGHTGRAY);
+        Group finale = new Group(soleil,soleil2,soleil());
         return new Group(finale);
     }
 

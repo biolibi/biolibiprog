@@ -12,7 +12,7 @@ import java.security.Key;
 import java.util.ArrayList;
 
 
-public class Neigle extends Group {
+public class Oiseau extends Group {
     Group oiseau = new Group(oiseau());
 
     public static Group oiseau(){

@@ -1,4 +1,3 @@
-import javafx.animation.RotateTransition;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
-import javafx.util.Duration;
 
 
 public class Main extends Application {
@@ -43,7 +41,7 @@ public class Main extends Application {
         Maison maison = new Maison();
         Maison maisonNuit = new Maison();
         Étoile étoile = new Étoile();
-        Neigle oiseau = new Neigle();
+        Oiseau oiseau = new Oiseau();
         Oiseau2 oiseau2 = new Oiseau2();
         oiseau2.getTransforms();
         oiseau2.setTranslateX(200);
@@ -53,7 +51,7 @@ public class Main extends Application {
         maisonNuit.getGroupe().setTranslateX(410);
 
 
-        Group root = new Group(rectangleJour,rectangleNuit,jour,nuit,soleil.getGroupe(),lune,soleil,maison.getGroupe(), maisonNuit.getGroupe(),oiseau.getGroupe(),oiseau2.getGroupe(),étoile.getGroupe());
+        Group root = new Group(rectangleJour,rectangleNuit,jour,nuit,soleil.getGroupe(),lune,maison.getGroupe(), maisonNuit.getGroupe(),oiseau.getGroupe(),oiseau2.getGroupe(),étoile.getGroupe());
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

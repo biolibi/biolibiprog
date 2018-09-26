@@ -15,7 +15,7 @@ public class Soleil extends Group {
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2),soleil);
         rotateTransition.setByAngle(360);
         rotateTransition.setCycleCount(-1);
-        rotateTransition.setAutoReverse(true);
+        rotateTransition.setAutoReverse(false);
         rotateTransition.play();
         Circle soleil2 = new Circle(320,60,48);
         soleil2.setFill(Color.LIGHTGRAY);
